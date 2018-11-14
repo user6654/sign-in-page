@@ -1,0 +1,24 @@
+div {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+input {
+flex-direction: column;
+background-color : white;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+button {
+flex-direction: column;
+background-color : navy;
+width: 120px;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+margin: 10px;
+}
