@@ -8,30 +8,28 @@ import { userModel } from "../model/user";
   templateUrl: "./signin.component.html",
   styleUrls: ["./signin.component.scss"]
 })
-
 export class SigninComponent implements OnInit {
   public users: userModel[];
   public signInForm: FormGroup;
+  public loginMatchDisplay: string;
 
   constructor(private fb: FormBuilder) {
     this.users = [
-      { username: 'nemo', password: 'qwer1234' },
-      { username: 'nema', password: 'qwer1234' }
+      { username: "nemo", password: "qwer1234" },
+      { username: "nema", password: "qwer1234" }
     ];
   }
 
   ngOnInit() {
-    this.initForm()
+    this.initForm();
   }
 
   private initForm() {
     this.signInForm = this.fb.group({
-
-    username : new FormControl(''),
-    password : new FormControl('', {updateOn: 'blur'})
-    })
+      username: new FormControl(""),
+      password: new FormControl("", { updateOn: "blur" })
+    });
   }
-
 
   public onSubmit() {
     const user = this.signInForm.value;
@@ -40,22 +38,24 @@ export class SigninComponent implements OnInit {
 
   public matchUser(user: userModel) {
     this.users.some(compareToValidSignIns => {
-      if(compareToValidSignIns.username === user.username &&
-         compareToValidSignIns.password === user.password){
-           console.log('Login Accepted')
-           return true;
-         } else {
-           console.log('Invalid Login Input')
-         }
-    })
-  }
-///*
+      if (
+        compareToValidSignIns.username === user.username &&
+        compareToValidSignIns.password === user.password
+      ) {
+        this.loginMatchDisplay="Login Accepted";
+        return true;
+      } else {
+        this.loginMatchDisplay="Invalid Login Inp=ut";
+      }
+    });
+}
+  ///*
   get username() {
-    return this.signInForm.get('username').value
+    return this.signInForm.get("username").value;
   }
 
   get password() {
-    return this.signInForm.get('password').value
+    return this.signInForm.get("password").value;
   }
-//*/
+  //*/
 }

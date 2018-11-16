@@ -1,9 +1,10 @@
 <div class="container">
-  <div>
+
     <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="username" />
       <input type="password" formControlName="password" />
-      <button type="submit">Proceed to Login</button>
+      <button type="submit">Login</button>
+      <div> {{ loginMatchDisplay }} </div>
     </form>
-  </div>
+
 </div>
